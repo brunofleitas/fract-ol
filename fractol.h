@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 00:59:46 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 02:01:24 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #define WIDTH 800
 #define HEIGHT 800
+#define MAX_ITER 100
+#define ESCAPE_RADIUS 4
 
 typedef struct s_fractal
 {
@@ -22,6 +24,9 @@ typedef struct s_fractal
     void	    *mlx;
     void	    *window;
     t_image     image;
+    int	        max_iter;
+    int         scape_radius;
+    int         color;
 }	t_fractal;
 
 typedef struct s_image
@@ -51,3 +56,7 @@ void    create_window(t_fractal *fractal);
 void    create_image(t_fractal *fractal);
 void    mandelbrot(t_fractal *fractal);
 
+//RENDERING MANDELBROT
+double  scale(int x, int width, double min, double max);
+void    put_in_buffer(int x, int y, t_fractal *fractal);
+void    rendering_mandelbrot(t_fractal *fractal);
