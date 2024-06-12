@@ -6,11 +6,11 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:31:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 03:04:24 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 03:25:26 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "1-fractol.h"
 
 void    create_conection(t_fractal *fractal) 
 {
@@ -58,16 +58,14 @@ void    mandelbrot(t_fractal *fractal)
     mlx_loop(fractal->mlx);
 }
 
-void    julia(t_fractal *fractal, t_complex julia)
+void    julia(t_fractal *fractal, t_complex juliaPoint)
 {
-    fractal->julia.real = real;
-    fractal->julia.imaginary = imaginary;
     fractal->name = "Julia";
     fractal->max_iter = MAX_ITER;
     fractal->scape_radius = ESCAPE_RADIUS;
     create_conection(fractal);
     create_window(fractal);
     create_image(fractal);
-    rendering_julia(fractal, julia);
+    rendering_julia(fractal, juliaPoint);
     mlx_loop(fractal->mlx);
 }

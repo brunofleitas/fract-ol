@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 03:09:08 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 03:29:01 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,18 @@ void ft_putstr(char *str);
 t_complex   sum(t_complex z1, t_complex z2);
 t_complex   square(t_complex z1);
 
-//CREATION MANDELBROT
+//CREATION FRACTAL
 void    create_conection(t_fractal *fractal);
 void    create_window(t_fractal *fractal);
 void    create_image(t_fractal *fractal);
 void    mandelbrot(t_fractal *fractal);
+void    julia(t_fractal *fractal, t_complex julia);
 
 //RENDERING MANDELBROT
 double  scale(double input, double new_min, double new_max, double old_max);
-void    put_in_buffer(int x, int y, t_fractal *fractal);
+void    put_in_buffer_mandelbrot(int x, int y, t_fractal *fractal);
 void    rendering_mandelbrot(t_fractal *fractal);
-void    my_mlx_pixel_put(t_fractal *fractal, int x, int y, int color);
+void   rendering_julia(t_fractal *fractal, t_complex julia);
+void    put_pixel_buffer(t_fractal *fractal, int x, int y, int color);
+void    put_in_buffer_julia(int x, int y, t_fractal *fractal, t_complex julia);
+

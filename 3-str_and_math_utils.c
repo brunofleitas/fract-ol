@@ -6,11 +6,11 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:08:54 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 02:59:04 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 03:15:37 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "1-fractol.h"
 
 int ft_strcmp(char *s1, char *s2)
 {

@@ -6,11 +6,11 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 01:38:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 03:11:55 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 03:29:51 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "1-fractol.h"
 
 void    put_pixel_buffer(t_fractal *fractal, int x, int y, int color)
 {
@@ -53,7 +53,7 @@ void   rendering_mandelbrot(t_fractal *fractal)
     {
         while (x < WIDTH)
         {
-            put_in_buffer(x, y, fractal);
+            put_in_buffer_mandelbrot(x, y, fractal);
             x++;
         }
         x = 0;

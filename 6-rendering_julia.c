@@ -6,14 +6,14 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 02:55:28 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 03:13:39 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 03:30:02 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "1-fractol.h"
 
 
-void    put_in_buffer(int x, int y, t_fractal *fractal, t_complex julia)
+void    put_in_buffer_julia(int x, int y, t_fractal *fractal, t_complex julia)
 {
     t_complex   c;
     t_complex   z;
@@ -46,7 +46,7 @@ void   rendering_julia(t_fractal *fractal, t_complex julia)
     {
         while (x < WIDTH)
         {
-            put_in_buffer(x, y, fractal, julia);
+            put_in_buffer_julia(x, y, fractal, julia);
             x++;
         }
         x = 0;
