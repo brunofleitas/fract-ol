@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 02:27:54 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 02:41:08 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,4 @@ void    mandelbrot(t_fractal *fractal);
 double  scale(double input, double new_min, double new_max, double old_max);
 void    put_in_buffer(int x, int y, t_fractal *fractal);
 void    rendering_mandelbrot(t_fractal *fractal);
+void    my_mlx_pixel_put(t_fractal *fractal, int x, int y, int color);

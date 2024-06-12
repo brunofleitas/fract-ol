@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:31:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 02:29:16 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 02:51:10 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,6 @@ void    mandelbrot(t_fractal *fractal)
     create_conection(fractal);
     create_window(fractal);
     create_image(fractal);
+    rendering_mandelbrot(fractal);
+    mlx_loop(fractal->mlx);
 }

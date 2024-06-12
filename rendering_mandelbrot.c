@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 01:38:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 02:39:47 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 02:42:12 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void    put_in_buffer(int x, int y, t_fractal *fractal)
         i++;
     }
     if (i == fractal->max_iter)
-        my_mlx_pixel_put(&fractal->image, x, y, 0x000000);
+        my_mlx_pixel_put(fractal, x, y, 0x000000);
     else
-        my_mlx_pixel_put(&fractal->image, x, y, 0xFFFFFF);
+        my_mlx_pixel_put(fractal, x, y, 0xFFFFFF);
 }
 
 void   rendering_mandelbrot(t_fractal *fractal)
