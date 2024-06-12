@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:31:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 01:51:07 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 02:29:16 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void    mandelbrot(t_fractal *fractal)
     fractal->name = "Mandelbrot";
     fractal->max_iter = MAX_ITER;
     fractal->scape_radius = ESCAPE_RADIUS;
-    create_conection(&fractal);
-    create_window(&fractal);
-    create_image(&fractal);
+    create_conection(fractal);
+    create_window(fractal);
+    create_image(fractal);
 }

@@ -6,17 +6,33 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 02:22:45 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 02:27:54 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h> //write
+#include <stdlib.h> //malloc
 #include "MinilibX/mlx.h" //mlx
 
 #define WIDTH 800
 #define HEIGHT 800
 #define MAX_ITER 100
 #define ESCAPE_RADIUS 4
+
+typedef struct s_complex
+{
+    double	real;
+    double	imaginary;
+}	t_complex;
+
+typedef struct s_image
+{
+    void	    *image;
+    char	    *address;
+    int	        bits_per_pixel;
+    int	        line_length;
+    int	        endian;
+}	t_image;
 
 typedef struct s_fractal
 {
@@ -28,21 +44,6 @@ typedef struct s_fractal
     int         scape_radius;
     int         color;
 }	t_fractal;
-
-typedef struct s_image
-{
-    void	    *image;
-    char	    *address;
-    int	        bits_per_pixel;
-    int	        line_length;
-    int	        endian;
-}	t_image;
-
-typedef struct s_complex
-{
-    double	real;
-    double	imaginary;
-}	t_complex;
 
 //STR AND MATH UTILS
 int ft_strcmp(char *s1, char *s2);
