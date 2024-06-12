@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 01:38:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 02:16:03 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 02:17:30 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void    put_in_buffer(int x, int y, t_fractal *fractal)
     i = 0;
     c.real = scale(x, -2, 2, WIDTH);
     c.imaginary = scale(y, 2, -2, HEIGHT);
-    while (i < fractal->max_iter && (z.real * z.real + z.imaginary * z.imaginary) < escape_radius)
+    while (i < fractal->max_iter && (z.real * z.real + z.imaginary * z.imaginary) < fractal->scape_radius)
     {
         z = sum(square(z), c);
         i++;
