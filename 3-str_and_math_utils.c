@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_and_math_utils.c                               :+:      :+:    :+:   */
+/*   3-str_and_math_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:08:54 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 01:51:18 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 02:59:04 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,10 @@ t_complex   square(t_complex z1)
     temp.real = (z1.real * z1.real) - (z1.imaginary * z1.imaginary);
     temp.imaginary = 2 * (z1.real * z1.imaginary);
     return (temp);
+}
+
+double scale(double input, double new_min, double new_max, double old_max)
+{
+    return (new_min + (new_max - new_min) * ((input) / (old_max)));
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   creation_mandelbrot.c                              :+:      :+:    :+:   */
+/*   4-creation_fractal.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:31:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 02:51:10 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 03:04:24 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,19 @@ void    mandelbrot(t_fractal *fractal)
     create_window(fractal);
     create_image(fractal);
     rendering_mandelbrot(fractal);
+    mlx_loop(fractal->mlx);
+}
+
+void    julia(t_fractal *fractal, t_complex julia)
+{
+    fractal->julia.real = real;
+    fractal->julia.imaginary = imaginary;
+    fractal->name = "Julia";
+    fractal->max_iter = MAX_ITER;
+    fractal->scape_radius = ESCAPE_RADIUS;
+    create_conection(fractal);
+    create_window(fractal);
+    create_image(fractal);
+    rendering_julia(fractal, julia);
     mlx_loop(fractal->mlx);
 }

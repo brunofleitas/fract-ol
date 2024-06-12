@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering_mandelbrot.c                             :+:      :+:    :+:   */
+/*   6-rendering_julia.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 01:38:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 02:42:12 by bfleitas         ###   ########.fr       */
+/*   Created: 2024/06/12 02:55:28 by bfleitas          #+#    #+#             */
+/*   Updated: 2024/06/12 03:13:39 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double scale(double input, double new_min, double new_max, double old_max)
-{
-    return (new_min + (new_max - new_min) * ((input) / (old_max)));
-}
 
-void    my_mlx_pixel_put(t_fractal *fractal, int x, int y, int color)
-{
-    char    *dst;
-
-    dst = fractal->image.address + (y * fractal->image.line_length + x * (fractal->image.bits_per_pixel / 8));
-    *(unsigned int *)dst = color;
-} 
-
-void    put_in_buffer(int x, int y, t_fractal *fractal)
+void    put_in_buffer(int x, int y, t_fractal *fractal, t_complex julia)
 {
     t_complex   c;
     t_complex   z;
     int         i;
 
-    z.real = 0;
-    z.imaginary = 0;
+    z.real = julia.real;
+    z.imaginary = julia.imaginary;
     i = 0;
     c.real = scale(x, -2, 2, WIDTH);
     c.imaginary = scale(y, 2, -2, HEIGHT);
@@ -42,12 +30,12 @@ void    put_in_buffer(int x, int y, t_fractal *fractal)
         i++;
     }
     if (i == fractal->max_iter)
-        my_mlx_pixel_put(fractal, x, y, 0x000000);
+        put_pixel_buffer(fractal, x, y, 0x000000);
     else
-        my_mlx_pixel_put(fractal, x, y, 0xFFFFFF);
+        put_pixel_buffer(fractal, x, y, 0xFFFFFF);
 }
 
-void   rendering_mandelbrot(t_fractal *fractal)
+void   rendering_julia(t_fractal *fractal, t_complex julia)
 {
     int x;
     int y;
@@ -58,7 +46,7 @@ void   rendering_mandelbrot(t_fractal *fractal)
     {
         while (x < WIDTH)
         {
-            put_in_buffer(x, y, fractal);
+            put_in_buffer(x, y, fractal, julia);
             x++;
         }
         x = 0;
