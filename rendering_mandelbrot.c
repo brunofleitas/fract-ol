@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 01:38:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 02:17:30 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/12 02:38:28 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 double scale(double input, double new_min, double new_max, double old_max)
 {
     return (new_min + (new_max - new_min) * ((input) / (old_max)));
+}
+
+void    my_mlx_pixel_put(t_fractal *fractal, int x, int y, int color)
+{
+    char    *dst;
+
+    dst = fractal->image.address + (y * fractal->image.line_length + x * (fractal->image.bits_per_pixel / 8));
+    *(unsigned int *)dst = color;
 }
 
 void    put_in_buffer(int x, int y, t_fractal *fractal)
