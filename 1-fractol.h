@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 03:29:01 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:07:00 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ typedef struct s_image
     int	        endian;
 }	t_image;
 
+typedef struct s_events
+{
+    double	    left_right_x;
+    double	    up_down_y;
+    double	    mouse_roll;
+}	t_events;
+
 typedef struct s_fractal
 {
     char	    *name;
@@ -43,6 +50,7 @@ typedef struct s_fractal
     int	        max_iter;
     int         scape_radius;
     int         color;
+    t_events    events;
 }	t_fractal;
 
 //STR AND MATH UTILS

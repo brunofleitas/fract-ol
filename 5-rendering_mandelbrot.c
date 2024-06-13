@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 01:38:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 01:53:42 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:08:23 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void    put_in_buffer_mandelbrot(int x, int y, t_fractal *fractal)
     z.real = 0;
     z.imaginary = 0;
     i = 0;
-    c.real = scale(x, -2, 2, WIDTH);
-    c.imaginary = scale(y, 2, -2, HEIGHT);
+    c.real = scale(x, -2, 2, WIDTH) * fractal->events.mouse_roll + fractal->events.left_right_x;
+    c.imaginary = scale(y, 2, -2, HEIGHT) * fractal->events.mouse_roll + fractal->events.up_down_y;
     while (i < fractal->max_iter )
     {
         z = sum(square(z), c);
