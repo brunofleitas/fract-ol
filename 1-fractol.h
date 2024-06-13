@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 19:39:32 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 20:27:19 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int ft_strcmp(char *s1, char *s2);
 void ft_putstr(char *str);
 t_complex   sum(t_complex z1, t_complex z2);
 t_complex   square(t_complex z1);
+double array_to_double(char* str);
 
 //CREATION FRACTAL
 void    create_conection(t_fractal *fractal);

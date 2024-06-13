@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:08:54 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/12 03:15:37 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 20:25:13 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,39 @@ t_complex   square(t_complex z1)
 double scale(double input, double new_min, double new_max, double old_max)
 {
     return (new_min + (new_max - new_min) * ((input) / (old_max)));
+}
+
+double array_to_double(char* str)
+{
+    double integer;
+    double decimal;
+    int i;
+    int sign;
+    int power;
+
+    i = 0;
+    sign = 1;
+    integer = 0;
+    decimal = 0;
+    power = 1;
+    if (str[i] == '-')
+    {
+        sign = -1;
+        i++;
+    }
+    while (str[i] && str[i] != '.')
+    {
+        integer = integer * 10 + (str[i] - '0');
+        i++;
+    }
+    if (str[i] == '.')
+        i++;
+    while (str[i])
+    {
+        power = power / 10;
+        decimal = decimal + (str[i] - '0') * powers;
+        i++;
+    }
+    return  ((integer + decimal) * sign);
 }
 
