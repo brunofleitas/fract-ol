@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:57:20 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 18:41:45 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 19:02:57 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ void    listener(t_fractal *fractal)
 
 int     key_action(int keycode, t_fractal *fractal)
 {
-    if (keycode == 0xff1b)
+    if (keycode == ESC)
         manage_close_key(fractal);
-    if (keycode == 0xff51)
+    if (keycode == LEFT)
         fractal->events.left_right_x += (0.25 * fractal->events.mouse_roll);
-    if (keycode == 0xff53) 
+    if (keycode == RIGHT) 
         fractal->events.left_right_x -= (0.25 * fractal->events.mouse_roll);
-    if (keycode == 0xff54)
+    if (keycode == DOWN)
         fractal->events.up_down_y += (0.25 * fractal->events.mouse_roll);
-    if (keycode == 0xff52)
+    if (keycode == UP)
         fractal->events.up_down_y -= (0.25 * fractal->events.mouse_roll);
-    if (keycode == 0x002b)
+    if (keycode == PLUS)
         fractal->max_iter += 10;
-    if (keycode == 0x002d)
+    if (keycode == MINUS)
         fractal->max_iter -= 10;
     rendering_mandelbrot(fractal);
     return (0);
@@ -41,9 +41,9 @@ int     key_action(int keycode, t_fractal *fractal)
 
 int     mouse_action(int button, int x, int y, t_fractal *fractal)
 {
-    if (button == 4)
+    if (button == SCROLL_UP)
         fractal->events.mouse_roll *= 0.9;
-    if (button == 5)
+    if (button == SCROLL_DOWN)
         fractal->events.mouse_roll *= 1.1;
     rendering_mandelbrot(fractal);
     return (0);

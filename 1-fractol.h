@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 18:33:37 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 19:39:32 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,18 @@
 
 #define WIDTH 800
 #define HEIGHT 800
-#define MAX_ITER 200
+#define MAX_ITER 300
 #define ESCAPE_RADIUS 4
+
+#define ESC 0xff1b
+#define LEFT 0xff51
+#define RIGHT 0xff53
+#define DOWN 0xff54
+#define UP 0xff52
+#define PLUS 0x002b
+#define MINUS 0x002d
+#define SCROLL_UP 4
+#define SCROLL_DOWN 5
 
 typedef struct s_complex
 {
