@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 01:38:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 16:08:23 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 21:45:37 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void    put_in_buffer_mandelbrot(int x, int y, t_fractal *fractal)
     put_pixel_buffer(fractal, x, y, 0X000000);
 }
 
-void   rendering_mandelbrot(t_fractal *fractal)
+void   rendering_fractal(t_fractal *fractal)
 {
     int x;
     int y;
@@ -57,7 +57,10 @@ void   rendering_mandelbrot(t_fractal *fractal)
     {
         while (x < WIDTH)
         {
-            put_in_buffer_mandelbrot(x, y, fractal);
+            if (fractal->name == "Mandelbrot")
+                put_in_buffer_mandelbrot(x, y, fractal);
+            else if (fractal->name == "Julia")
+                put_in_buffer_julia(x, y, fractal);
             x++;
         }
         x = 0;

@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:08:54 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 20:58:36 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 21:21:40 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ double scale(double input, double new_min, double new_max, double old_max)
 double array_to_double(char* str)
 {
     double integer;
-    double decimal;
     int i;
     int sign;
-    int power;
+    double power;
+    double decimal;
 
     i = 0;
     sign = 1;
@@ -82,14 +82,12 @@ double array_to_double(char* str)
     }
     if (str[i] == '.')
         i++;
-    printf("integer: %f\n", integer);
     while (str[i])
     {
         power = power / 10;
         decimal = decimal + (str[i] - '0') * power;
         i++;
     }
-    printf("decimal: %f\n", decimal);
     return  ((integer + decimal) * sign);
 }
 

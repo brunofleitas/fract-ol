@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:57:20 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 19:02:57 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 21:42:42 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int     key_action(int keycode, t_fractal *fractal)
         fractal->max_iter += 10;
     if (keycode == MINUS)
         fractal->max_iter -= 10;
-    rendering_mandelbrot(fractal);
+    rendering_fractal(fractal);
     return (0);
 }
 
@@ -45,7 +45,7 @@ int     mouse_action(int button, int x, int y, t_fractal *fractal)
         fractal->events.mouse_roll *= 0.9;
     if (button == SCROLL_DOWN)
         fractal->events.mouse_roll *= 1.1;
-    rendering_mandelbrot(fractal);
+    rendering_fractal(fractal);
     return (0);
 }
 

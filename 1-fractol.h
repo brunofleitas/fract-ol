@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 20:27:19 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 21:47:14 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_fractal
     int         scape_radius;
     int         color;
     t_events    events;
+    t_complex   juliaPoint;
 }	t_fractal;
 
 //STR AND MATH UTILS
@@ -77,15 +78,15 @@ void    create_conection(t_fractal *fractal);
 void    create_window(t_fractal *fractal);
 void    create_image(t_fractal *fractal);
 void    mandelbrot(t_fractal *fractal);
-void    julia(t_fractal *fractal, t_complex julia);
+void    julia(t_fractal *fractal);
 
 //RENDERING MANDELBROT
 double  scale(double input, double new_min, double new_max, double old_max);
 void    put_in_buffer_mandelbrot(int x, int y, t_fractal *fractal);
 void    rendering_mandelbrot(t_fractal *fractal);
-void   rendering_julia(t_fractal *fractal, t_complex julia);
+void   rendering_julia(t_fractal *fractal);
 void    put_pixel_buffer(t_fractal *fractal, int x, int y, int color);
-void    put_in_buffer_julia(int x, int y, t_fractal *fractal, t_complex julia);
+void    put_in_buffer_julia(int x, int y, t_fractal *fractal);
 
 //EVENT MANAGER
 void    listener(t_fractal *fractal);

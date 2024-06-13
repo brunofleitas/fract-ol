@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:31:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 20:36:51 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 21:40:54 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,23 @@ void    mandelbrot(t_fractal *fractal)
     create_conection(fractal);
     create_window(fractal);
     create_image(fractal);
-    rendering_mandelbrot(fractal);
+    rendering_fractal(fractal);
     listener(fractal);
     mlx_loop(fractal->mlx);
 }
 
-/*void    julia(t_fractal *fractal, t_complex juliaPoint)
+void    julia(t_fractal *fractal)
 {
     fractal->name = "Julia";
     fractal->max_iter = MAX_ITER;
     fractal->scape_radius = ESCAPE_RADIUS;
+    fractal->events.left_right_x = 0;
+    fractal->events.up_down_y = 0;
+    fractal->events.mouse_roll = 1;
     create_conection(fractal);
     create_window(fractal);
     create_image(fractal);
-    rendering_julia(fractal, juliaPoint);
+    rendering_fractal(fractal);
+    listener(fractal);
     mlx_loop(fractal->mlx);
-}*/
+}
