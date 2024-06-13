@@ -6,74 +6,58 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:31:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 21:40:54 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 00:24:50 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "1-fractol.h"
 
-void    create_conection(t_fractal *fractal) 
+void	create_conection(t_fractal *fractal)
 {
-    fractal->mlx = mlx_init();
-    if (!fractal->mlx)
-        ft_putstr("Error\n");
+	fractal->mlx = mlx_init();
+	if (!fractal->mlx)
+		ft_putstr("Error\n");
 }
 
-void    create_window(t_fractal *fractal)
+void	create_window(t_fractal *fractal)
 {
-    fractal->window = mlx_new_window(fractal->mlx, WIDTH, HEIGHT, fractal->name);
-    if (!fractal->window)
-    {
-        mlx_destroy_display(fractal->mlx);
-        free(fractal->mlx);
-        ft_putstr("Error\n");
-    }
+	fractal->window = mlx_new_window(fractal->mlx, WIDTH, HEIGHT,
+			fractal->name);
+	if (!fractal->window)
+	{
+		mlx_destroy_display(fractal->mlx);
+		free(fractal->mlx);
+		ft_putstr("Error\n");
+	}
 }
 
-void    create_image(t_fractal *fractal)
+void	create_image(t_fractal *fractal)
 {
-    fractal->image.image = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
-    if (!fractal->image.image)
-    {
-        mlx_destroy_window(fractal->mlx, fractal->window);
-        mlx_destroy_display(fractal->mlx);
-        free(fractal->mlx);
-        ft_putstr("Error\n");
-    }
-    fractal->image.address = mlx_get_data_addr(fractal->image.image, 
-                                                &fractal->image.bits_per_pixel, 
-                                                &fractal->image.line_length, 
-                                                &fractal->image.endian);
+	fractal->image.image = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
+	if (!fractal->image.image)
+	{
+		mlx_destroy_window(fractal->mlx, fractal->window);
+		mlx_destroy_display(fractal->mlx);
+		free(fractal->mlx);
+		ft_putstr("Error\n");
+	}
+	fractal->image.address = mlx_get_data_addr(fractal->image.image,
+			&fractal->image.bits_per_pixel, &fractal->image.line_length,
+			&fractal->image.endian);
 }
 
-void    mandelbrot(t_fractal *fractal)
+void	create_fractal(t_fractal *fractal)
 {
-    fractal->name = "Mandelbrot";
-    fractal->max_iter = MAX_ITER;
-    fractal->scape_radius = ESCAPE_RADIUS;
-    fractal->events.left_right_x = 0;
-    fractal->events.up_down_y = 0;
-    fractal->events.mouse_roll = 1;
-    create_conection(fractal);
-    create_window(fractal);
-    create_image(fractal);
-    rendering_fractal(fractal);
-    listener(fractal);
-    mlx_loop(fractal->mlx);
-}
-
-void    julia(t_fractal *fractal)
-{
-    fractal->name = "Julia";
-    fractal->max_iter = MAX_ITER;
-    fractal->scape_radius = ESCAPE_RADIUS;
-    fractal->events.left_right_x = 0;
-    fractal->events.up_down_y = 0;
-    fractal->events.mouse_roll = 1;
-    create_conection(fractal);
-    create_window(fractal);
-    create_image(fractal);
-    rendering_fractal(fractal);
-    listener(fractal);
-    mlx_loop(fractal->mlx);
+	fractal->name = "Mandelbrot";
+	fractal->max_iter = MAX_ITER;
+	fractal->scape_radius = ESCAPE_RADIUS;
+	fractal->events.left_right_x = 0;
+	fractal->events.up_down_y = 0;
+	fractal->events.mouse_roll = 1;
+	create_conection(fractal);
+	create_window(fractal);
+	create_image(fractal);
+	rendering_fractal(fractal);
+	listener(fractal);
+	mlx_loop(fractal->mlx);
 }
