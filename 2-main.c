@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:07:30 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 00:24:27 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 01:17:35 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	main(int argc, char **argv)
 
 	if (ft_strcmp(argv[1], "mandelbrot") == 0 && argc == 2)
 	{
-		fractal.name = "Mandelbrot";
+		fractal.name = argv[1];
 		create_fractal(&fractal);
 	}
 	else if (ft_strcmp(argv[1], "julia") == 0 && argc == 4)
 	{
-		fractal.name = "Julia";
+		fractal.name = argv[1];
 		fractal.juliaPoint.real = array_to_double(argv[2]);
 		fractal.juliaPoint.imaginary = array_to_double(argv[3]);
 		create_fractal(&fractal);

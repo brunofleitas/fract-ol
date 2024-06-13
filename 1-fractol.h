@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 00:24:21 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 01:25:21 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #define WIDTH 800
 #define HEIGHT 800
-#define MAX_ITER 300
+#define MAX_ITER 100
 #define ESCAPE_RADIUS 4
 
 #define ESC 0xff1b

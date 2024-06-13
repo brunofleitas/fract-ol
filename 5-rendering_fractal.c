@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 01:38:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 00:26:33 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 01:34:06 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,25 @@ void	put_in_buffer(int x, int y, t_fractal *fractal)
 	int			i;
 	int			color;
 
-	z.real = 0;
-	z.imaginary = 0;
+
 	i = 0;
 	if (ft_strcmp(fractal->name, "mandelbrot") == 0)
 	{
+		z.real = 0;
+		z.imaginary = 0;
 		c.real = scale(x, -2, 2, WIDTH) * fractal->events.mouse_roll
 			+ fractal->events.left_right_x;
 		c.imaginary = scale(y, 2, -2, HEIGHT) * fractal->events.mouse_roll
 			+ fractal->events.up_down_y;
 	}
-	else if (ft_strcmp(fractal->name, "julia") == 0)
+	if (ft_strcmp(fractal->name, "julia") == 0)
 	{
-		c.real = fractal->julia_point.real;
-		c.imaginary = fractal->julia_point.imaginary;
+		z.real = scale(x, -2, 2, WIDTH) * fractal->events.mouse_roll
+			+ fractal->events.left_right_x;
+		z.imaginary = scale(y, 2, -2, HEIGHT) * fractal->events.mouse_roll
+			+ fractal->events.up_down_y;
+		c.real = fractal->juliaPoint.real;
+		c.imaginary = fractal->juliaPoint.imaginary;
 	}
 	while (i < fractal->max_iter)
 	{

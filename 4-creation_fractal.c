@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:31:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 00:24:50 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 01:33:43 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	create_image(t_fractal *fractal)
 
 void	create_fractal(t_fractal *fractal)
 {
-	fractal->name = "Mandelbrot";
 	fractal->max_iter = MAX_ITER;
 	fractal->scape_radius = ESCAPE_RADIUS;
 	fractal->events.left_right_x = 0;
