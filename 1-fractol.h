@@ -6,17 +6,19 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 16:07:00 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:56:51 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h> //write
 #include <stdlib.h> //malloc
 #include "MinilibX/mlx.h" //mlx
+#include <X11/X.h> //keycodes
+#include <stdio.h> //printf
 
 #define WIDTH 800
 #define HEIGHT 800
-#define MAX_ITER 1000
+#define MAX_ITER 20
 #define ESCAPE_RADIUS 4
 
 typedef struct s_complex
@@ -73,4 +75,11 @@ void    rendering_mandelbrot(t_fractal *fractal);
 void   rendering_julia(t_fractal *fractal, t_complex julia);
 void    put_pixel_buffer(t_fractal *fractal, int x, int y, int color);
 void    put_in_buffer_julia(int x, int y, t_fractal *fractal, t_complex julia);
+
+//EVENT MANAGER
+void    listener(t_fractal *fractal);
+int     key_action(int keycode, t_fractal *fractal);
+int     mouse_action(int button, int x, int y, t_fractal *fractal);
+int     close_window(t_fractal *fractal);
+void    manage_close_key(t_fractal *fractal);
 
