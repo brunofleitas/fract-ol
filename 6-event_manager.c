@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:57:20 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/13 17:34:20 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:44:12 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,34 +21,31 @@ void    listener(t_fractal *fractal)
 
 int     key_action(int keycode, t_fractal *fractal)
 {
-    write(1, "Keycode: ", 9);
-    //printf("Keycode: %d\n", keycode);
-    /*
     if (keycode == 0xff1b)
     {
         printf("ESC pressed\n");
-        //manage_close_key(fractal);
+        manage_close_key(fractal);
     }
     if (keycode == 0xff51)
     {
         printf("LEFT pressed\n");
-        //fractal->events.left_right_x -= 1;
+        fractal->events.left_right_x -= 1;
     }
     if (keycode == 0xff53)
     {
         printf("RIGHT pressed\n");  
-        //fractal->events.left_right_x += 1;
+        fractal->events.left_right_x += 1;
     }
     if (keycode == 0xff54)
     {
         printf("DOWN pressed\n");
-        //fractal->events.up_down_y -= 1;
+        fractal->events.up_down_y -= 1;
     }
     if (keycode == 0xff52)
     {
         printf("UP pressed\n");
-        //fractal->events.up_down_y += 1;
-    }*/
+        fractal->events.up_down_y += 1;
+    }
     return (0);
 }
 
