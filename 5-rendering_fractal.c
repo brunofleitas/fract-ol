@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 01:38:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 02:54:54 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 17:54:41 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,18 @@ void	put_in_buffer(int x, int y, t_fractal *fractal)
 			i++;
 		}
 	}
-	if (ft_strcmp(fractal->name, "snowflake") == 0)
+	if (ft_strcmp(fractal->name, "burningship") == 0)
 	{
+		fractal->max_iter = 30;
 		z.real = 0;
 		z.imaginary = 0;
-		c.real = scale(x, -2, 2, WIDTH) * fractal->events.mouse_roll
+		c.real = scale(x, 2, -2, WIDTH) * fractal->events.mouse_roll
 			+ fractal->events.left_right_x;
-		c.imaginary = scale(y, 2, -2, HEIGHT) * fractal->events.mouse_roll
+		c.imaginary = scale(y, -2, 2, HEIGHT) * fractal->events.mouse_roll
 			+ fractal->events.up_down_y;
 		while (i < fractal->max_iter)
 		{
-			z = sum(six(z), c);
+			z = sum(square_abs(z), c);
 			if ((z.real * z.real + z.imaginary
 					* z.imaginary) > fractal->scape_radius)
 			{

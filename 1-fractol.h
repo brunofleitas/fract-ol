@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 02:53:41 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 17:44:31 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdio.h>        //printf
 #include <stdlib.h>       //malloc
 #include <unistd.h>       //write
+//#include <X11/keysym.h>
 
 #define WIDTH 800
 #define HEIGHT 800
@@ -26,8 +27,8 @@
 #define RIGHT 0xff53
 #define DOWN 0xff54
 #define UP 0xff52
-#define PLUS 0x002b
-#define MINUS 0x002d
+#define PLUS 0xffab
+#define MINUS 0xffad
 #define SCROLL_UP 4
 #define SCROLL_DOWN 5
 
@@ -100,3 +101,4 @@ t_complex	four(t_complex z1);
 t_complex	five(t_complex z1);
 t_complex	six(t_complex z1);
 t_complex divide(t_complex a, t_complex b);
+t_complex	square_abs(t_complex z1);

@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:57:20 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 00:25:09 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:02:59 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	key_action(int keycode, t_fractal *fractal)
 		fractal->events.up_down_y += (0.25 * fractal->events.mouse_roll);
 	if (keycode == UP)
 		fractal->events.up_down_y -= (0.25 * fractal->events.mouse_roll);
-	if (keycode == PLUS)
+	if (keycode == PLUS )
 		fractal->max_iter += 10;
-	if (keycode == MINUS)
+	if (keycode == MINUS )
 		fractal->max_iter -= 10;
 	rendering_fractal(fractal);
 	return (0);
