@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 02:43:29 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 02:53:41 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,7 @@ void			manage_close_key(t_fractal *fractal);
 unsigned long long	factorial(int n);
 double	exponential(double x);
 t_complex	cube(t_complex z1);
+t_complex	four(t_complex z1);
+t_complex	five(t_complex z1);
+t_complex	six(t_complex z1);
 t_complex divide(t_complex a, t_complex b);
