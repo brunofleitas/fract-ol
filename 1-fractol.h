@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 01:25:21 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 02:43:29 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,3 +92,8 @@ int				key_action(int keycode, t_fractal *fractal);
 int				mouse_action(int button, int x, int y, t_fractal *fractal);
 int				close_window(t_fractal *fractal);
 void			manage_close_key(t_fractal *fractal);
+
+unsigned long long	factorial(int n);
+double	exponential(double x);
+t_complex	cube(t_complex z1);
+t_complex divide(t_complex a, t_complex b);
