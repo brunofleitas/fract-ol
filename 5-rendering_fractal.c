@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 01:38:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 01:34:06 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 02:26:08 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	put_in_buffer(int x, int y, t_fractal *fractal)
 	int			i;
 	int			color;
 
-
 	i = 0;
 	if (ft_strcmp(fractal->name, "mandelbrot") == 0)
 	{
@@ -43,6 +42,18 @@ void	put_in_buffer(int x, int y, t_fractal *fractal)
 			+ fractal->events.left_right_x;
 		c.imaginary = scale(y, 2, -2, HEIGHT) * fractal->events.mouse_roll
 			+ fractal->events.up_down_y;
+		while (i < fractal->max_iter)
+		{
+			z = sum(square(z), c);
+			if ((z.real * z.real + z.imaginary
+					* z.imaginary) > fractal->scape_radius)
+			{
+				color = scale(i, 0xFFFFFF, 0X000000, fractal->max_iter);
+				put_pixel_buffer(fractal, x, y, color);
+				return ;
+			}
+			i++;
+		}
 	}
 	if (ft_strcmp(fractal->name, "julia") == 0)
 	{
@@ -52,18 +63,39 @@ void	put_in_buffer(int x, int y, t_fractal *fractal)
 			+ fractal->events.up_down_y;
 		c.real = fractal->juliaPoint.real;
 		c.imaginary = fractal->juliaPoint.imaginary;
-	}
-	while (i < fractal->max_iter)
-	{
-		z = sum(square(z), c);
-		if ((z.real * z.real + z.imaginary
-				* z.imaginary) > fractal->scape_radius)
+		while (i < fractal->max_iter)
 		{
-			color = scale(i, 0xFFFFFF, 0X000000, fractal->max_iter);
-			put_pixel_buffer(fractal, x, y, color);
-			return ;
+			z = sum(square(z), c);
+			if ((z.real * z.real + z.imaginary
+					* z.imaginary) > fractal->scape_radius)
+			{
+				color = scale(i, 0xFFFFFF, 0X000000, fractal->max_iter);
+				put_pixel_buffer(fractal, x, y, color);
+				return ;
+			}
+			i++;
 		}
-		i++;
+	}
+	if (ft_strcmp(fractal->name, "trilogy") == 0)
+	{
+		z.real = 0;
+		z.imaginary = 0;
+		c.real = scale(x, -2, 2, WIDTH) * fractal->events.mouse_roll
+			+ fractal->events.left_right_x;
+		c.imaginary = scale(y, 2, -2, HEIGHT) * fractal->events.mouse_roll
+			+ fractal->events.up_down_y;
+		while (i < fractal->max_iter)
+		{
+			z = exponential(divide(cube(c), cube(z)));
+			if ((z.real * z.real + z.imaginary
+					* z.imaginary) > fractal->scape_radius)
+			{
+				color = scale(i, 0xFFFFFF, 0X000000, fractal->max_iter);
+				put_pixel_buffer(fractal, x, y, color);
+				return ;
+			}
+			i++;
+		}
 	}
 	put_pixel_buffer(fractal, x, y, 0X000000);
 }
@@ -88,3 +120,5 @@ void	rendering_fractal(t_fractal *fractal)
 	mlx_put_image_to_window(fractal->mlx, fractal->window, fractal->image.image,
 		0, 0);
 }
+
+

@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:08:54 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 00:24:35 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/14 02:31:05 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,64 @@ double	array_to_double(char *str)
 		i++;
 	}
 	return ((integer + decimal) * sign);
+}
+
+unsigned long long	factorial(int n)
+{
+	unsigned long long	fact;
+	int					i;
+
+	if (n == 0)
+		return (1);
+	else
+	{
+		fact = 1;
+		i = 1;
+		while (i <= n)
+		{
+			fact *= i;
+			i++;
+		}
+		return (fact);
+	}
+}
+
+double	exponential(double x)
+{
+	int	n;
+	int terms;
+
+	double result = 1.0;
+	double power = 1.0; 
+	n = 1;
+	terms = 15;
+	while (n < terms)
+	{
+		power *= x; 
+		result += power / factorial(n);
+		n++;
+	}
+	return (result);
+}
+
+t_complex	cube(t_complex z1)
+{
+	t_complex	tempsquare;
+	t_complex	temp;
+
+	tempsquare = square(z1);
+	temp.real = (tempsquare.real * tempsquare.real) - (tempsquare.imaginary * tempsquare.imaginary);
+	temp.imaginary = 2 * (tempsquare.real * tempsquare.imaginary);
+	return (temp);
+}
+
+t_complex divide(t_complex a, t_complex b) 
+{
+    t_complex result;
+	double denominador;
+
+    denominador = b.real * b.real + b.imaginary * b.imaginary;
+    result.real = (a.real * b.real + a.imaginary * b.imaginary) / denominador;
+    result.imaginary = (a.imaginary * b.real - a.real * b.imaginary) / denominador;
+    return (result);
 }
