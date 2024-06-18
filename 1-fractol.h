@@ -6,7 +6,7 @@
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 17:44:31 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/18 01:57:04 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,71 +34,77 @@
 
 typedef struct s_complex
 {
-	double		real;
-	double		imaginary;
-}				t_complex;
+	double			real;
+	double			imaginary;
+}					t_complex;
 
 typedef struct s_image
 {
-	void		*image;
-	char		*address;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_image;
+	void			*image;
+	char			*address;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}					t_image;
 
 typedef struct s_events
 {
-	double		left_right_x;
-	double		up_down_y;
-	double		mouse_roll;
-}				t_events;
+	double			left_right_x;
+	double			up_down_y;
+	double			mouse_roll;
+}					t_events;
 
 typedef struct s_fractal
 {
-	char		*name;
-	void		*mlx;
-	void		*window;
-	t_image		image;
-	int			max_iter;
-	int			scape_radius;
-	int			color;
-	t_events	events;
-	t_complex	juliaPoint;
-}				t_fractal;
+	char			*name;
+	void			*mlx;
+	void			*window;
+	t_image			image;
+	int				max_iter;
+	int				scape_radius;
+	int				color;
+	t_events		events;
+	t_complex		julia_point;
+}					t_fractal;
 
 // STR AND MATH UTILS
-int				ft_strcmp(char *s1, char *s2);
-void			ft_putstr(char *str);
-t_complex		sum(t_complex z1, t_complex z2);
-t_complex		square(t_complex z1);
-double			array_to_double(char *str);
+int					ft_strcmp(char *s1, char *s2);
+void				ft_putstr(char *str);
+t_complex			sum(t_complex z1, t_complex z2);
+t_complex			square(t_complex z1);
+double				array_to_double(char *str);
 
 // CREATION FRACTAL
-void			create_conection(t_fractal *fractal);
-void			create_window(t_fractal *fractal);
-void			create_image(t_fractal *fractal);
-void			create_fractal(t_fractal *fractal);
+void				create_conection(t_fractal *fractal);
+void				create_window(t_fractal *fractal);
+void				create_image(t_fractal *fractal);
+void				create_fractal(t_fractal *fractal);
 
 // RENDERING FRACTAL
-void			rendering_fractal(t_fractal *fractal);
-void			put_in_buffer(int x, int y, t_fractal *fractal);
-void			put_pixel_buffer(t_fractal *fractal, int x, int y, int color);
-double			scale(double input, double new_min, double new_max,
-					double old_max);
+void				rendering_fractal(t_fractal *fractal);
+void				put_in_buffer(int x, int y, t_fractal *fractal);
+void				save_pixel_on_buffer(t_fractal *fractal, int x, int y,
+						int color);
+double				scale(double input, double new_min, double new_max,
+						double old_max);
+
+// BUILD DIFFERENT FRACTALS
+void				mandelbrot(int x, int y, t_fractal *fractal);
+void				julia(int x, int y, t_fractal *fractal);
+void				burningship(int x, int y, t_fractal *fractal);
 
 // EVENT MANAGER
-void			listener(t_fractal *fractal);
-int				key_action(int keycode, t_fractal *fractal);
-int				mouse_action(int button, int x, int y, t_fractal *fractal);
-int				close_window(t_fractal *fractal);
-void			manage_close_key(t_fractal *fractal);
+void				listener(t_fractal *fractal);
+int					key_action(int keycode, t_fractal *fractal);
+int					mouse_action(int button, int x, int y, t_fractal *fractal);
+int					close_window(t_fractal *fractal);
+void				manage_close_key(t_fractal *fractal);
 
 unsigned long long	factorial(int n);
-double	exponential(double x);
-t_complex	cube(t_complex z1);
-t_complex	four(t_complex z1);
-t_complex	five(t_complex z1);
-t_complex	six(t_complex z1);
-t_complex divide(t_complex a, t_complex b);
-t_complex	square_abs(t_complex z1);
+double				exponential(double x);
+t_complex			cube(t_complex z1);
+t_complex			four(t_complex z1);
+t_complex			five(t_complex z1);
+t_complex			six(t_complex z1);
+t_complex			divide(t_complex a, t_complex b);
+t_complex			square_abs(t_complex z1);

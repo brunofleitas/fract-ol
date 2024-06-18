@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3-str_and_math_utils.c                             :+:      :+:    :+:   */
+/*   3-str_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:08:54 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/14 16:04:53 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/18 02:01:26 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "1-fractol.h"
 
+//CAMBIAR CON ORIGINAL
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
@@ -22,6 +23,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
+//CAMBIAR CON ORIGINAL
 void	ft_putstr(char *str)
 {
 	int	i;
@@ -34,24 +36,7 @@ void	ft_putstr(char *str)
 	}
 }
 
-t_complex	sum(t_complex z1, t_complex z2)
-{
-	t_complex	temp;
-
-	temp.real = z1.real + z2.real;
-	temp.imaginary = z1.imaginary + z2.imaginary;
-	return (temp);
-}
-
-t_complex	square(t_complex z1)
-{
-	t_complex	temp;
-
-	temp.real = (z1.real * z1.real) - (z1.imaginary * z1.imaginary);
-	temp.imaginary = 2 * (z1.real * z1.imaginary);
-	return (temp);
-}
-
+//CAMBIAR CON ORIGINAL
 double	array_to_double(char *str)
 {
 	double	integer;
@@ -85,22 +70,3 @@ double	array_to_double(char *str)
 	}
 	return ((integer + decimal) * sign);
 }
-
-t_complex	square_abs(t_complex z1)
-{
-	t_complex	abs;
-	t_complex	temp;
-
-	if (z1.real < 0)
-		abs.real = -z1.real;
-	else
-		abs.real = z1.real;
-	if (z1.imaginary < 0)
-		abs.imaginary = -z1.imaginary;
-	else
-		abs.imaginary = z1.imaginary;
-	temp.real = (abs.real * abs.real) - (abs.imaginary * abs.imaginary);
-	temp.imaginary = 2 * (abs.real * abs.imaginary);
-	return (temp);
-}
-
