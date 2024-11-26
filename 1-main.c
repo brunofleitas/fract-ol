@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2-main.c                                           :+:      :+:    :+:   */
+/*   1-main.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:07:30 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/18 01:59:23 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/18 13:26:31 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "1-fractol.h"
+#include "fractol.h"
+
+void	input_options(void)
+{
+	ft_putstr_fd("Invalid fractal name\nValid options:\n \
+		mandelbrot\n \
+		julia <real value> <imaginary value>\n \
+		burningship\n", 1);
+}
 
 /*
   Main function to create fractals based on command-line arguments.
@@ -23,26 +31,25 @@
 int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
-	t_complex	julia_point;
 
-	if (ft_strcmp(argv[1], "mandelbrot") == 0 && argc == 2)
+	if (argc > 1 && ft_strcmp(argv[1], "mandelbrot") == 0 && argc == 2)
 	{
 		fractal.name = argv[1];
 		create_fractal(&fractal);
 	}
-	else if (ft_strcmp(argv[1], "julia") == 0 && argc == 4)
+	else if (argc > 1 && ft_strcmp(argv[1], "julia") == 0 && argc == 4)
 	{
 		fractal.name = argv[1];
 		fractal.julia_point.real = array_to_double(argv[2]);
 		fractal.julia_point.imaginary = array_to_double(argv[3]);
 		create_fractal(&fractal);
 	}
-	else if (ft_strcmp(argv[1], "burningship") == 0 && argc == 2)
+	else if (argc > 1 && ft_strcmp(argv[1], "burningship") == 0 && argc == 2)
 	{
 		fractal.name = argv[1];
 		create_fractal(&fractal);
 	}
 	else
-		ft_putstr("Invalid fractal name\n");
+		input_options();
 	return (0);
 }

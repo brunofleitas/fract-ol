@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   4-creation_fractal.c                               :+:      :+:    :+:   */
+/*   5-creation_fractal.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:31:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/18 01:25:07 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:25:28 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "1-fractol.h"
+#include "fractol.h"
 
 /*
   Parameters:
@@ -25,7 +25,7 @@ void	create_conection(t_fractal *fractal)
 {
 	fractal->mlx = mlx_init();
 	if (!fractal->mlx)
-		ft_putstr("Error\n");
+		ft_putstr_fd("Error\n", 2);
 }
 
 /*
@@ -46,7 +46,7 @@ void	create_window(t_fractal *fractal)
 	{
 		mlx_destroy_display(fractal->mlx);
 		free(fractal->mlx);
-		ft_putstr("Error\n");
+		ft_putstr_fd("Error\n", 2);
 	}
 }
 
@@ -67,7 +67,7 @@ void	create_image(t_fractal *fractal)
 		mlx_destroy_window(fractal->mlx, fractal->window);
 		mlx_destroy_display(fractal->mlx);
 		free(fractal->mlx);
-		ft_putstr("Error\n");
+		ft_putstr_fd("Error\n", 2);
 	}
 	fractal->image.address = mlx_get_data_addr(fractal->image.image,
 			&fractal->image.bits_per_pixel, &fractal->image.line_length,

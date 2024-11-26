@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   7-event_manager.c                                  :+:      :+:    :+:   */
+/*   8-event_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:57:20 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/18 01:58:11 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/18 13:32:08 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "1-fractol.h"
+#include "fractol.h"
 
 /*
   Parameters:
@@ -70,6 +70,9 @@ int	key_action(int keycode, t_fractal *fractal)
 */
 int	mouse_action(int button, int x, int y, t_fractal *fractal)
 {
+	(void)x;
+	(void)y;
+	
 	if (button == SCROLL_UP)
 		fractal->events.mouse_roll *= 0.9;
 	if (button == SCROLL_DOWN)

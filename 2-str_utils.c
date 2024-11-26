@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3-str_utils.c                                      :+:      :+:    :+:   */
+/*   2-str_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:08:54 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/18 02:01:26 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:17:04 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "1-fractol.h"
+#include "fractol.h"
 
-//CAMBIAR CON ORIGINAL
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
@@ -23,19 +22,38 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-//CAMBIAR CON ORIGINAL
-void	ft_putstr(char *str)
+/*
+  Parameters: 
+      c: The character to write to the file descriptor.
+      fd: The file descriptor to write to.
+  Description:
+      Writes the character 'c' to the file descriptor 'fd'.
+*/
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+/*
+  Parameters: 
+      s: The string to write to the file descriptor.
+      fd: The file descriptor to write to.
+  Description:
+      Writes the string 's' to the file descriptor 'fd'.
+*/
+void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (s[i] != '\0')
 	{
-		write(1, &str[i], 1);
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
 }
 
+/*
 //CAMBIAR CON ORIGINAL
 double	array_to_double(char *str)
 {
@@ -50,23 +68,35 @@ double	array_to_double(char *str)
 	integer = 0;
 	decimal = 0;
 	power = 1;
-	if (str[i] == '-')
+	while (str[i] != 0 && ((str[i] == ' ')
+		|| (str[i] >= 9 && str[i] <= 13)))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		sign = -1;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
 	while (str[i] && str[i] != '.')
 	{
-		integer = integer * 10 + (str[i] - '0');
+		if ((str[i] >= '0' && str[i] <= '9'))
+			integer = integer * 10 + (str[i] - '0');
+		else 
+			return (0);
 		i++;
 	}
 	if (str[i] == '.')
 		i++;
 	while (str[i])
 	{
-		power = power / 10;
-		decimal = decimal + (str[i] - '0') * power;
+		if ((str[i] >= '0' && str[i] <= '9'))
+		{
+			power = power / 10;
+			decimal = decimal + (str[i] - '0') * power;
+		}
+		else 
+			return (0);
 		i++;
 	}
 	return ((integer + decimal) * sign);
-}
+}*/

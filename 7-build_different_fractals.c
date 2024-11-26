@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   6-build_different_farctals.c                       :+:      :+:    :+:   */
+/*   7-build_different_farctals.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 01:31:21 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/18 01:56:01 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:41:31 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "1-fractol.h"
+#include "fractol.h"
 
 /*
   Parameters:
@@ -34,6 +34,7 @@ void	mandelbrot(int x, int y, t_fractal *fractal)
 	int			i;
 	int			color;
 
+	i = 0;
 	z.real = 0;
 	z.imaginary = 0;
 	c.real = scale(x, -2, 2, WIDTH) * fractal->events.mouse_roll
@@ -52,6 +53,7 @@ void	mandelbrot(int x, int y, t_fractal *fractal)
 		}
 		i++;
 	}
+	save_pixel_on_buffer(fractal, x, y, 0X000000);
 }
 
 /*
@@ -75,12 +77,13 @@ void	julia(int x, int y, t_fractal *fractal)
 	int			i;
 	int			color;
 
-	z.real = scale(x, -2, 2, WIDTH) * fractal->events.mouse_roll
+	i = 0;
+	z.real = scale(x, 2, -2, WIDTH) * fractal->events.mouse_roll
 		+ fractal->events.left_right_x;
-	z.imaginary = scale(y, 2, -2, HEIGHT) * fractal->events.mouse_roll
+	z.imaginary = scale(y, -2, 2, HEIGHT) * fractal->events.mouse_roll
 		+ fractal->events.up_down_y;
-	c.real = fractal->juliaPoint.real;
-	c.imaginary = fractal->juliaPoint.imaginary;
+	c.real = fractal->julia_point.real;
+	c.imaginary = fractal->julia_point.imaginary;
 	while (i < fractal->max_iter)
 	{
 		z = sum(square(z), c);
@@ -93,6 +96,7 @@ void	julia(int x, int y, t_fractal *fractal)
 		}
 		i++;
 	}
+	save_pixel_on_buffer(fractal, x, y, 0X000000);
 }
 
 /*
@@ -117,7 +121,7 @@ void	burningship(int x, int y, t_fractal *fractal)
 	int			i;
 	int			color;
 
-	fractal->max_iter = 30;
+	i = 0;
 	z.real = 0;
 	z.imaginary = 0;
 	c.real = scale(x, 2, -2, WIDTH) * fractal->events.mouse_roll
@@ -136,4 +140,5 @@ void	burningship(int x, int y, t_fractal *fractal)
 		}
 		i++;
 	}
+	save_pixel_on_buffer(fractal, x, y, 0X000000);
 }

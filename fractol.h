@@ -1,37 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1-fractol.h                                        :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:03:51 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/18 01:57:04 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/18 13:56:45 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MinilibX/mlx.h" //mlx
-#include <X11/X.h>        //keycodes
-#include <stdio.h>        //printf
-#include <stdlib.h>       //malloc
-#include <unistd.h>       //write
-//#include <X11/keysym.h>
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
-#define WIDTH 800
-#define HEIGHT 800
-#define MAX_ITER 100
-#define ESCAPE_RADIUS 4
+/* ************************************************************************** */
+/* LIBRARIES                                                                  */
+/* ************************************************************************** */
+# include "MinilibX/mlx.h" //mlx
+# include <X11/X.h>        //keycodes
+# include <stdlib.h>       //malloc
+# include <unistd.h>       //write
 
-#define ESC 0xff1b
-#define LEFT 0xff51
-#define RIGHT 0xff53
-#define DOWN 0xff54
-#define UP 0xff52
-#define PLUS 0xffab
-#define MINUS 0xffad
-#define SCROLL_UP 4
-#define SCROLL_DOWN 5
+/* ************************************************************************** */
+/* DEFINITIONS                                                                */
+/* ************************************************************************** */
+# define WIDTH 800
+# define HEIGHT 800
+# define MAX_ITER 120
+# define ESCAPE_RADIUS 4
 
+# define ESC 0xff1b
+# define LEFT 0xff51
+# define RIGHT 0xff53
+# define DOWN 0xff54
+# define UP 0xff52
+# define PLUS 0xffab
+# define MINUS 0xffad
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
+
+/* ************************************************************************** */
+/* STRUCTURES                                                                 */
+/* ************************************************************************** */
 typedef struct s_complex
 {
 	double			real;
@@ -67,12 +77,24 @@ typedef struct s_fractal
 	t_complex		julia_point;
 }					t_fractal;
 
-// STR AND MATH UTILS
+/* ************************************************************************** */
+/* FUNCTIONS                                                                  */
+/* ************************************************************************** */
+// STR UTILS
 int					ft_strcmp(char *s1, char *s2);
-void				ft_putstr(char *str);
+void				ft_putchar_fd(char c, int fd);
+void				ft_putstr_fd(char *s, int fd);
+
+// ARRAY TO DOUBLE
+double				array_to_double(char *str);
+void				generate_decimal(int *i, char *str, double *power,
+						double *decimal);
+void				generate_integer(int *i, char *str, double *integer);
+
+// MATH UTILS
 t_complex			sum(t_complex z1, t_complex z2);
 t_complex			square(t_complex z1);
-double				array_to_double(char *str);
+t_complex			square_abs(t_complex z1);
 
 // CREATION FRACTAL
 void				create_conection(t_fractal *fractal);
@@ -100,11 +122,4 @@ int					mouse_action(int button, int x, int y, t_fractal *fractal);
 int					close_window(t_fractal *fractal);
 void				manage_close_key(t_fractal *fractal);
 
-unsigned long long	factorial(int n);
-double				exponential(double x);
-t_complex			cube(t_complex z1);
-t_complex			four(t_complex z1);
-t_complex			five(t_complex z1);
-t_complex			six(t_complex z1);
-t_complex			divide(t_complex a, t_complex b);
-t_complex			square_abs(t_complex z1);
+#endif

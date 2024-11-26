@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   5-rendering_fractal.c                              :+:      :+:    :+:   */
+/*   6-rendering_fractal.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfleitas <bfleitas@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 01:38:58 by bfleitas          #+#    #+#             */
-/*   Updated: 2024/06/18 01:58:50 by bfleitas         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:37:19 by bfleitas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "1-fractol.h"
+#include "fractol.h"
 
 /*
   Parameters:
@@ -64,7 +64,6 @@ void	put_in_buffer(int x, int y, t_fractal *fractal)
 		julia(x, y, fractal);
 	if (ft_strcmp(fractal->name, "burningship") == 0)
 		burningship(x, y, fractal);
-	save_pixel_on_buffer(fractal, x, y, 0X000000);
 }
 
 /*
